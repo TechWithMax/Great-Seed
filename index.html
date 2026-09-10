@@ -14,6 +14,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="img/fav-icon.png" type="image/x-icon">
 
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
@@ -38,13 +39,13 @@
 
   <!-- ===== NAV ===== -->
   <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="index.html" class="brand">
+    <div class="container nav-inner ">
+      <a href="index.html" class="brand text-decoration-none">
         <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
           <path d="M12 21c0-6 0-11 5-15M12 21c0-6 0-11-5-15M7 6c2 0 5 1 5 5M17 6c-2 0-5 1-5 5" stroke-linecap="round"
             stroke-linejoin="round" />
         </svg>
-        <span>Great Seed <strong>Herbal Ministry</strong></span>
+        <span ><strong>Great Seed</strong></span>
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -54,7 +55,7 @@
         <li><a href="consultation.html">Consultation</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <a href="consultation.html" class="btn btn-primary nav-cta">Begin Awakening</a>
+      
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -63,18 +64,15 @@
 
   <!-- ===== HERO ===== -->
   <header class="hero">
-    <svg class="hero-sprig" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1">
-      <path
-        d="M100 190V60M100 60c0-25 20-40 45-40M100 60c0-25-20-40-45-40M100 110c0-18 15-28 32-28M100 110c0-18-15-28-32-28M100 145c0-14 12-22 26-22M100 145c0-14-12-22-26-22"
-        stroke-linecap="round" />
-    </svg>
+    <div class="hero-slides">
+      <div class="hero-slide is-active" style="background-image: url('img/hero-1.jpg');" data-slide="1"></div>
+      <div class="hero-slide" style="background-image: url('img/hero-2.jpg');" data-slide="2"></div>
+      <div class="hero-slide" style="background-image: url('img/hero-3.jpg');" data-slide="3"></div>
+    </div>
+    
     <div class="container hero-inner">
       <div class="eyebrow center">
-        <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
-          <circle cx="12" cy="12" r="3" />
-          <path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"
-            stroke-linecap="round" />
-        </svg>
+        
         Great Seed Herbal Ministry
       </div>
       <h1>The soul that sleeps in soil<br><em>waits only to be watered.</em></h1>
@@ -84,6 +82,11 @@
         <a href="consultation.html" class="btn btn-primary">Begin Your Awakening</a>
         <a href="our-story.html" class="btn btn-outline">Read Our Story</a>
       </div>
+    </div>
+    <div class="hero-dots">
+      <button class="hero-dot is-active" aria-label="Show slide 1"></button>
+      <button class="hero-dot" aria-label="Show slide 2"></button>
+      <button class="hero-dot" aria-label="Show slide 3"></button>
     </div>
   </header>
 
@@ -108,10 +111,7 @@
           <a href="service.html" class="btn btn-outline-dark">Explore Our Services</a>
         </div>
         <div class="reveal portrait-frame">
-          <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-            <path d="M12 3c3 3 6 6 6 10a6 6 0 0 1-12 0c0-4 3-7 6-10Z" />
-            <path d="M12 13V21" />
-          </svg>
+          <img src="img/tree-1.avif" alt="Portrait" />
         </div>
       </div>
     </div>
@@ -183,16 +183,16 @@
         <h2>Rooted in plants. Grounded in ministry.</h2>
       </div>
       <div class="card-grid">
-        <article class="jar-card reveal">
+         <article class="jar-card jar-card--photo reveal" style="background-image: url('img/service-bg.jpg');">
           <span class="tag">No. 01</span>
           <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M9 3h6M10 3v4l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3" stroke-linecap="round"
               stroke-linejoin="round" />
           </svg>
           <h3>Herbal Consultations</h3>
-          <p>One-on-one sessions to build a plant-based wellness plan suited to your body and season of life.</p>
+          <p class="text-white">One-on-one sessions to build a plant-based wellness plan suited to your body and season of life.</p>
         </article>
-        <article class="jar-card reveal">
+        <article class="jar-card jar-card--photo reveal" style="background-image: url('img/service-bg.jpg');">
           <span class="tag">No. 02</span>
           <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
             <path
@@ -200,16 +200,16 @@
             <circle cx="12" cy="12" r="4.5" />
           </svg>
           <h3>Soul Awakening Sessions</h3>
-          <p>Guided reflection and prayer that reconnect you with purpose, clarity, and inner stillness.</p>
+          <p class="text-white">Guided reflection and prayer that reconnect you with purpose, clarity, and inner stillness.</p>
         </article>
-        <article class="jar-card reveal">
+         <article class="jar-card jar-card--photo reveal" style="background-image: url('img/service-bg.jpg');">
           <span class="tag">No. 03</span>
           <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
             <rect x="4" y="4" width="16" height="16" rx="1" />
             <path d="M8 9h8M8 13h5" />
           </svg>
           <h3>Ministry Counseling</h3>
-          <p>Faith-rooted guidance for grief, transition, and the questions that keep you up at night.</p>
+          <p class="text-white">Faith-rooted guidance for grief, transition, and the questions that keep you up at night.</p>
         </article>
       </div>
       <div class="text-center" style="margin-top:44px;">
@@ -217,6 +217,63 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== THIRD EYE (IMAGE) ===== -->
+  <section>
+    <div class="container">
+      <div class="split split-reverse">
+        <div class="reveal">
+          
+          <h2>Open the third eye. See what dormancy hid from you.</h2>
+          <p>Beneath the noise of daily life sits a quieter kind of vision — the sight that notices purpose, pattern,
+            and the sacred in ordinary things. Our members work with breathwork, herbal allies, and contemplative
+            practice to gently reopen that inner seeing.</p>
+          <p>This is not about escaping the world, but about finally meeting it clearly — rooted, awake, and
+            undistracted.</p>
+          <a href="inner-circle.html" class="btn btn-primary">Awaken Inner Sight</a>
+        </div>
+        <div class="reveal media-frame">
+            <img src="img/woman-meditate.avif" alt="Third eye" />
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONSULTATION (VIDEO) ===== -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="split">
+        <div class="reveal">
+          <div class="eyebrow">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+              <path d="M9 3h6M10 3v4l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            See it first
+          </div>
+          <h2>What actually happens in a consultation?</h2>
+          <p>No pressure, no performance — just an honest conversation about where you are and where you're hoping to
+            go. Watch a short walkthrough of what to expect, from your first questions to your personalized plan.</p>
+          <p>Most sessions run about 45 minutes and end with clear, gentle next steps you can actually keep.</p>
+          <a href="consultation.html" class="btn btn-outline-dark">Book a Consultation</a>
+        </div>
+        <div class="reveal media-frame media-frame--video">
+          <video class="consultation-video" poster="img/candle.avif" preload="metadata" playsinline>
+              <source src="videos/meditation.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          <button class="play-button" aria-label="Play video: What to expect in a consultation">
+            <svg class="glyph" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <path d="M8 5v14l11-7-11-7Z" />
+            </svg>
+          </button>
+          
+          <div class="media-caption">Video: What to expect in a consultation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ===== QUOTE ===== -->
   <section class="section-dark">
@@ -277,7 +334,7 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; <span id="year"></span> Great Seed Herbal Ministry. All rights reserved.</span>
-        <span>Grown with care.</span>
+        <span>Powered by <a href="https://www.ahofama.com" target="_blank" class="text-" rel="noopener noreferrer">Ahofama</a></span>
       </div>
     </div>
   </footer>

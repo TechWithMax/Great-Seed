@@ -1,5 +1,3 @@
-
-
 /* =========================================================
    GREAT SEED HERBAL MINISTRY
    Custom Design System
@@ -174,7 +172,8 @@ section {
 /* ---------- Navigation ---------- */
 
 .site-nav {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 20;
   background: var(--paper);
   border-bottom: 1px solid rgba(24, 59, 50, 0.1);
@@ -219,34 +218,16 @@ section {
 }
 
 .nav-links a {
-  position: relative;
   color: var(--muted);
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.04em;
+  text-decoration: none;
   transition: color var(--transition);
-}
-
-.nav-links a::after {
-  position: absolute;
-  right: 0;
-  bottom: -0.45rem;
-  left: 0;
-  height: 1px;
-  background: var(--gold);
-  content: "";
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform var(--transition);
 }
 
 .nav-links a:hover {
   color: var(--forest);
-}
-
-.nav-links a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
 }
 
 .nav-cta {
@@ -353,19 +334,59 @@ section {
   min-height: min(760px, calc(100vh - 82px));
   align-items: center;
   overflow: hidden;
-  background:
-    linear-gradient(100deg, rgba(16, 44, 37, 0.96), rgba(24, 59, 50, 0.77)),
-    radial-gradient(circle at 80% 20%, rgba(182, 139, 74, 0.3), transparent 32%);
+  background: var(--forest-dark);
   color: var(--white);
 }
 .service-action {
   margin-top: 2.75rem;
 }
 
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slides::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(100deg, rgba(16, 44, 37, 0.94), rgba(24, 59, 50, 0.72)),
+    radial-gradient(circle at 80% 20%, rgba(182, 139, 74, 0.3), transparent 32%);
+  content: "";
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: opacity 1.2s ease;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+}
+
+.hero-slide:nth-child(1) {
+  background-color: var(--forest-dark);
+}
+
+.hero-slide:nth-child(2) {
+  background-color: #253b28;
+}
+
+.hero-slide:nth-child(3) {
+  background-color: #3b2e18;
+}
 
 .hero::before {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
@@ -376,7 +397,7 @@ section {
 
 .hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding: 6rem 0;
 }
 
@@ -411,12 +432,40 @@ section {
 
 .hero-sprig {
   position: absolute;
+  z-index: 1;
   right: -4rem;
   bottom: -4rem;
   width: min(42vw, 520px);
   height: min(42vw, 520px);
   color: rgba(255, 255, 255, 0.18);
   transform: rotate(-12deg);
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  gap: 0.55rem;
+  transform: translateX(-50%);
+}
+
+.hero-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.hero-dot.is-active {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.15);
 }
 
 /* ---------- Intro Split ---------- */
@@ -453,6 +502,15 @@ section {
   content: "";
 }
 
+.portrait-frame img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .portrait-frame::before {
   inset: 1.2rem;
   border-radius: calc(var(--radius-lg) - 0.2rem);
@@ -471,6 +529,98 @@ section {
   width: 4.5rem;
   height: 4.5rem;
   color: var(--white);
+}
+
+/* ---------- Media Sections (Image / Video) ---------- */
+
+.split-reverse .media-frame {
+  order: -1;
+}
+
+.media-frame {
+  position: relative;
+  display: grid;
+  min-height: 480px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(rgba(24, 59, 50, 0.22), rgba(24, 59, 50, 0.22)),
+    radial-gradient(circle at 70% 25%, #c9d7bd, transparent 34%),
+    linear-gradient(135deg, #879d7c, #d6c29d);
+  box-shadow: var(--shadow-md);
+}
+
+.media-frame::before {
+  position: absolute;
+  inset: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: calc(var(--radius-lg) - 0.2rem);
+  content: "";
+}
+
+.media-frame img,
+.media-frame video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-frame .glyph {
+  position: relative;
+  z-index: 1;
+  width: 4.5rem;
+  height: 4.5rem;
+  color: var(--white);
+}
+
+.media-frame--video .play-button {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 5.5rem;
+  height: 5.5rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  background: rgba(24, 59, 50, 0.35);
+  color: var(--white);
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition);
+}
+
+.media-frame--video .play-button:hover {
+  background: rgba(24, 59, 50, 0.55);
+  transform: scale(1.06);
+}
+
+.media-frame--video .play-button .glyph {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-left: 3px;
+}
+
+.media-frame--video.is-playing .play-button,
+.media-frame--video.is-playing .media-caption {
+  display: none;
+}
+
+.media-caption {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  left: 1.2rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* ---------- Section Headers ---------- */
@@ -683,6 +833,7 @@ section {
 .footer-col a {
   color: rgba(255, 255, 255, 0.65);
   transition: color var(--transition);
+  text-decoration: none;
 }
 
 .footer-col a:hover {
@@ -742,10 +893,6 @@ section {
     padding: 0.8rem 1rem;
   }
 
-  .nav-links a::after {
-    display: none;
-  }
-
   .nav-cta {
     display: none;
   }
@@ -788,8 +935,13 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .portrait-frame {
+  .portrait-frame,
+  .media-frame {
     min-height: 360px;
+  }
+
+  .split-reverse .media-frame {
+    order: 0;
   }
 
   .stages {
