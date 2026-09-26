@@ -240,6 +240,11 @@ section {
   transition: color var(--transition);
 }
 
+.nav-links a.is-active {
+  color: var(--gold);
+  font-weight: 700;
+}
+
 .nav-links a::after {
   position: absolute;
   right: 0;
