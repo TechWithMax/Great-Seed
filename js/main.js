@@ -1,29 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
+  /* ---------- Mobile navigation ---------- */
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");
 
-  
-
   if (navToggle && navLinks) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("is-open");
-
+    const setNavState = (isOpen) => {
+      navLinks.classList.toggle("is-open", isOpen);
       navToggle.setAttribute("aria-expanded", String(isOpen));
-      navToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close menu" : "Toggle menu"
-      );
+      navToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Toggle menu");
+    };
+
+    navToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setNavState(!navLinks.classList.contains("is-open"));
     });
 
+    // Close when a menu link is clicked
     navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("is-open");
-        navToggle.setAttribute("aria-expanded", "false");
-        navToggle.setAttribute("aria-label", "Toggle menu");
-      });
+      link.addEventListener("click", () => setNavState(false));
+    });
+
+    // Close when tapping/clicking empty space outside the menu
+    document.addEventListener("click", (event) => {
+      if (!navLinks.classList.contains("is-open")) return;
+      if (navLinks.contains(event.target) || navToggle.contains(event.target)) return;
+      setNavState(false);
+    });
+
+    // Close with the Escape key
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setNavState(false);
+    });
+
+    // Reset if the screen is resized up to desktop
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 991) setNavState(false);
     });
   }
 
+  /* ---------- Scroll reveal ---------- */
   const revealElements = document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
@@ -48,12 +63,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ---------- Footer year ---------- */
   const yearElement = document.getElementById("year");
 
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
 
+  /* ---------- Hero slideshow ---------- */
   const heroSlides = document.querySelectorAll(".hero-slide");
   const heroDots = document.querySelectorAll(".hero-dot");
 
@@ -90,30 +107,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     startAutoplay();
-    
   }
 
-  
-  const videoFrame = document.querySelector(".media-frame--video");
-  const consultationVideo = document.querySelector(".consultation-video");
-  const playButton = document.querySelector(".media-frame--video .play-button");
-
-  if (videoFrame && consultationVideo && playButton) {
-    playButton.addEventListener("click", () => {
-      videoFrame.classList.add("is-playing");
-      consultationVideo.setAttribute("controls", "");
-      consultationVideo.play();
-    });
-  }
+  /* ---------- Highlight current page in nav ---------- */
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-document.querySelectorAll(".nav-links a").forEach((link) => {
-  const linkPage = link.getAttribute("href").split("/").pop();
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    const linkPage = link.getAttribute("href").split("/").pop();
 
-  if (linkPage === currentPage) {
-    link.classList.add("is-active");
-  }
+    if (linkPage === currentPage) {
+      link.classList.add("is-active");
+    }
+  });
 });
-
-});
-

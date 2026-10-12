@@ -226,6 +226,7 @@ section {
   align-items: center;
   gap: clamp(0.75rem, 2vw, 1.5rem);
   margin: 0;
+  z-index: 1001;
   padding: 0;
   list-style: none;
 }
@@ -269,12 +270,10 @@ section {
 
 .nav-toggle span {
   display: block;
-  width: 100%;
-  height: 5px;
-  margin-bottom: 2px;
-  background: var(--sage);
-  border-radius: 1px;
-  transition: transform var(--transition), opacity var(--transition);
+  width: 30px;
+  height: 2px;
+  margin: 5px auto;
+  background: var(--sage);        
 }
 
 .nav-inner {
@@ -286,15 +285,16 @@ section {
 }
 
 .nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 0;
+  -webkit-appearance: none;
+  appearance: none;
   background: transparent;
+  border: 0;
+  position: relative;
+  z-index: 1002;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: none;            
   cursor: pointer;
 }
 
@@ -1301,6 +1301,15 @@ section {
   list-style: none;
 }
 
+.footer-col h4 {
+  margin-bottom: 1rem;
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .footer-col li {
   margin-bottom: 0.55rem;
   font-size: 0.9rem;
@@ -1503,6 +1512,40 @@ section {
     flex-direction: column;
   }
 }
+
+.media-frame iframe {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.media-frame::before {
+  pointer-events: none;
+}
+
+/* Vertical (Shorts-style) video */
+.media-frame--short {
+  width: 100%;
+  max-width: 380px;
+  min-height: 0;
+  aspect-ratio: 9 / 16;
+  margin-inline: auto;
+}
+
+.media-caption-below {
+  margin: 1rem 0 0;
+  color: var(--forest);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+<iframe width="542" height="723" src="https://www.youtube.com/embed/ZvqdxJlRat8" title="Other&#39;s Shooting skill VS This guy☠️" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 /* ---------- Reduced Motion ---------- */
 
